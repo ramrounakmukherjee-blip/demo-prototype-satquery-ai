@@ -329,56 +329,38 @@ SatQuery AI is a cross-disciplinary effort spanning six roles:
 ```
 demo-prototype-satquery-ai/
 ├── README.md                          ← You are here
-├── agent/                             ← AI Agent Developer (role 1)
+├── agent/                             ← ROLE 1 — AI Agent Developer (active)
+│   ├── README.md                      ← Agent-module documentation
+│   ├── __init__.py                    ← Package docstring & exports
 │   ├── controller.py                  ← Main agentic orchestration loop
 │   ├── task_classifier.py             ← Query → task type mapping
 │   ├── input_validator.py             ← Image count / modality / format checks
 │   ├── model_registry.py              ← Registry of specialist models & tools
 │   ├── workflow_planner.py            ← Multi-step pipeline composition
+│   ├── tool_executor.py               ← Tool dispatch & parameter governance
 │   ├── output_integrator.py           ← Fusion of textual + spatial results
 │   ├── confidence.py                  ← Confidence estimation & calibration
 │   ├── audit.py                       ← Execution-trace / audit-log generation
+│   ├── prompts/                       ← LLM prompt templates
+│   ├── schemas/                       ← Typed schemas (Pydantic / dataclasses)
+│   ├── utils/                         ← Shared helpers (logging, config, etc.)
 │   └── tests/                         ← Agent unit & integration tests
-├── backend/                           ← Data Engineer (role 2)
-│   ├── api/                           ← REST/gRPC service endpoints
-│   ├── preprocessing/                 ← Image ingestion, format conversion
-│   ├── serving/                       ← Model-serving layer
-│   └── storage/                       ← Session & result storage
-├── geo/                               ← Remote Sensing & GIS (role 3)
-│   ├── gis_utils.py                   ← CRS, co-registration, metadata parsing
-│   ├── sar_preprocess.py              ← SAR-specific preprocessing
-│   ├── optical_preprocess.py          ← Optical/multispectral preprocessing
-│   └── metrics/                       ← RS-specific evaluation metrics
-├── cv/                                ← Computer Vision (role 4)
-│   ├── grounding.py                   ← Text-guided region localisation
-│   ├── change_detection.py            ← Bi-temporal change masks
-│   ├── visualisation.py               ← Overlay rendering (boxes, masks, heatmaps)
-│   └── utils/
-├── frontend/                          ← Frontend Developer (role 5)
-│   ├── src/
-│   │   ├── components/                ← Uploader, QueryBox, ResultPanel, Map
-│   │   ├── pages/
-│   │   └── App.*
-│   └── public/
-├── models/                            ← AI/ML & VLM (role 6)
-│   ├── rs_vqa/                        ← Remote-sensing VQA model
-│   ├── captioning/                    ← Scene-captioning model
-│   ├── change_vqa/                    ← Change-VQA / change-understanding model
-│   ├── optical_sar_fusion/            ← Cross-modal fusion model
-│   ├── adapters/                      ← PEFT / LoRA adapters for RS adaptation
-│   └── training/                      ← Fine-tuning scripts (BigEarthNet, etc.)
-├── data/                              ← Dataset loaders & sample data
-│   ├── bigearthnet/
-│   ├── vrsbench/
-│   ├── rsvqa/
-│   └── cdvqa/
-├── configs/                           ← YAML/JSON configs for models & pipelines
-├── notebooks/                         ← Exploration & demo notebooks
-├── tests/                             ← End-to-end & integration tests
-├── scripts/                           ← Utility & deployment scripts
-├── requirements.txt
-├── environment.yml
-└── pyproject.toml
+│       ├── test_controller.py
+│       ├── test_task_classifier.py
+│       ├── test_input_validator.py
+│       └── test_workflow_planner.py
+│
+│   (Folders for Roles 2–6 below are planned; they will be added as the
+│    corresponding team members scaffold their parts.)
+│
+├── backend/                           ← ROLE 2 — Data Engineer (planned)
+├── geo/                               ← ROLE 3 — Remote Sensing & GIS (planned)
+├── cv/                                ← ROLE 4 — Computer Vision (planned)
+├── frontend/                          ← ROLE 5 — Frontend Developer (planned)
+├── models/                            ← ROLE 6 — AI/ML & VLM (planned)
+├── data/                              ← Dataset loaders & sample data (planned)
+├── configs/                           ← YAML/JSON pipeline configs (planned)
+└── notebooks/                         ← Exploration & demos (planned)
 ```
 
 ---
