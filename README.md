@@ -329,7 +329,7 @@ SatQuery AI is a cross-disciplinary effort spanning six roles:
 ```
 demo-prototype-satquery-ai/
 ├── README.md                          ← You are here
-├── agent/                             ← ROLE 1 — AI Agent Developer (active)
+├── agent/                             ← ROLE 1 — AI Agent Developer (active ✅)
 │   ├── README.md                      ← Agent-module documentation
 │   ├── __init__.py                    ← Package docstring & exports
 │   ├── controller.py                  ← Main agentic orchestration loop
@@ -342,26 +342,104 @@ demo-prototype-satquery-ai/
 │   ├── confidence.py                  ← Confidence estimation & calibration
 │   ├── audit.py                       ← Execution-trace / audit-log generation
 │   ├── prompts/                       ← LLM prompt templates
+│   │   └── __init__.py
 │   ├── schemas/                       ← Typed schemas (Pydantic / dataclasses)
+│   │   └── __init__.py
 │   ├── utils/                         ← Shared helpers (logging, config, etc.)
+│   │   └── __init__.py
 │   └── tests/                         ← Agent unit & integration tests
+│       ├── __init__.py
 │       ├── test_controller.py
 │       ├── test_task_classifier.py
 │       ├── test_input_validator.py
 │       └── test_workflow_planner.py
 │
-│   (Folders for Roles 2–6 below are planned; they will be added as the
-│    corresponding team members scaffold their parts.)
+├── backend/                           ← ROLE 2 — Data Engineer (Backend Developer)
+│   ├── api/                           ← REST/gRPC service endpoints
+│   │   ├── routes/                    ← Query, upload, result, report endpoints
+│   │   └── schemas/                   ← Request/response schemas
+│   ├── preprocessing/                 ← Image ingestion & format conversion
+│   │   ├── geotiff_reader.py
+│   │   ├── sar_normalize.py
+│   │   └── optical_normalize.py
+│   ├── serving/                       ← Model-serving layer (TorchServe / Triton)
+│   ├── storage/                       ← Session & result storage
+│   └── auth/                          ← (Optional) access control
 │
-├── backend/                           ← ROLE 2 — Data Engineer (planned)
-├── geo/                               ← ROLE 3 — Remote Sensing & GIS (planned)
-├── cv/                                ← ROLE 4 — Computer Vision (planned)
-├── frontend/                          ← ROLE 5 — Frontend Developer (planned)
-├── models/                            ← ROLE 6 — AI/ML & VLM (planned)
-├── data/                              ← Dataset loaders & sample data (planned)
-├── configs/                           ← YAML/JSON pipeline configs (planned)
-└── notebooks/                         ← Exploration & demos (planned)
+├── geo/                               ← ROLE 3 — Remote Sensing & GIS Developer
+│   ├── gis_utils.py                   ← CRS handling, co-registration checks
+│   ├── metadata.py                    ← GeoTIFF metadata parsing
+│   ├── sar_preprocess.py              ← Speckle filtering, terrain correction
+│   ├── optical_preprocess.py          ← Band stacking, atmospheric correction
+│   ├── registration.py                ← Co-registration verification
+│   └── metrics/                       ← RS-specific evaluation metrics
+│       ├── change_metrics.py
+│       └── grounding_metrics.py
+│
+├── cv/                                ← ROLE 4 — Computer Vision Developer
+│   ├── grounding.py                   ← Text-guided region localisation
+│   ├── change_detection.py            ← Bi-temporal change masks
+│   ├── segmentation.py                ← Land-cover / built-up / water segmentation
+│   ├── visualisation.py               ← Overlay rendering (boxes, masks, heatmaps)
+│   └── utils/
+│       ├── augmentations.py
+│       └── postprocess.py
+│
+├── frontend/                          ← ROLE 5 — Frontend Developer
+│   ├── public/
+│   ├── src/
+│   │   ├── components/                ← Uploader, QueryBox, ResultPanel, MapView
+│   │   ├── pages/                     ← Home, Explore, History, Reports
+│   │   ├── hooks/
+│   │   ├── services/                  ← API client to backend
+│   │   ├── styles/
+│   │   ├── App.jsx / App.tsx
+│   │   └── main.jsx / main.tsx
+│   ├── package.json
+│   └── vite.config.js / next.config.*
+│
+├── models/                            ← ROLE 6 — AI/ML & VLM Developer
+│   ├── rs_vqa/                        ← Remote-sensing VQA model
+│   ├── captioning/                    ← Scene-captioning / land-cover model
+│   ├── grounding/                     ← Text-guided grounding model
+│   ├── change_vqa/                    ← Change-VQA / change-understanding model
+│   ├── optical_sar_fusion/            ← Cross-modal (optical–SAR) fusion model
+│   ├── adapters/                      ← PEFT / LoRA adapters for RS adaptation
+│   ├── backbones/                     ← Shared vision backbones
+│   └── training/                      ← Fine-tuning scripts
+│       ├── train_bigearthnet.py
+│       ├── train_vrsbench.py
+│       ├── train_rsvqa.py
+│       └── train_cdvqa.py
+│
+├── data/                              ← Dataset loaders & sample data
+│   ├── bigearthnet/
+│   ├── vrsbench/
+│   ├── rsvqa/
+│   ├── cdvqa/
+│   └── samples/                       ← Demo images for quick testing
+│
+├── configs/                           ← YAML/JSON configs
+│   ├── agent.yaml
+│   ├── models/
+│   └── app.yaml
+│
+├── notebooks/                         ← Exploration, evaluation, demos
+├── scripts/                           ← Utility & deployment scripts
+│   ├── download_data.sh
+│   ├── serve.sh
+│   └── run_tests.sh
+│
+├── tests/                             ← End-to-end & integration tests
+├── requirements.txt                   ← Python dependencies
+├── environment.yml                    ← Conda environment
+├── pyproject.toml
+├── Dockerfile
+└── docker-compose.yml
 ```
+
+> **Note on repository status:** The `agent/` package (Role 1) is currently scaffolded on disk. The remaining directories (Roles 2–6 and supporting folders) are planned and will be created as the respective team members begin work. The structure above reflects the target end-state layout.
+
 
 ---
 
